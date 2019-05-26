@@ -1,0 +1,69 @@
+﻿@model IEnumerable<RentalDTO>
+
+@{
+    ViewData["Title"] = "Cars List";
+}
+
+<h2>Cars List</h2>
+
+<p>
+    <a asp-action="Search" class="btn btn-primary">Rent new car</a>
+</p>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Car.Brand)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Car.Model)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartCarRentalDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EndCarRentalDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RentalInDays)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FullPrice)
+            </th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Car.Brand)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Car.Model)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartCarRentalDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndCarRentalDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RentalInDays)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FullPrice)
+            </td>
+            <td class="btn-group">
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info">Details</a>
+            </td>
+            <td>
+                <a asp-action="Cancel" asp-route-id="@item.Id" class="btn btn-danger">Cancel</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

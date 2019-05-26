@@ -1,0 +1,79 @@
+﻿@model RentalDTO
+
+@{
+    ViewData["Title"] = "Rent a car";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<h4>Rental data</h4>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-12">
+        @using (Html.BeginForm("Create", "Rentals", FormMethod.Post))
+        {
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @Html.HiddenFor(m => m.CarId)
+            @Html.HiddenFor(m => m.AppUserId)
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Car.Brand" class="control-label"></label>
+                        <input asp-for="Car.Brand" class="form-control" readonly="readonly" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Car.Model" class="control-label"></label>
+                        <input asp-for="Car.Model" class="form-control" readonly="readonly" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label asp-for="StartCarRentalDate" class="control-label"></label>
+                        <input asp-for="StartCarRentalDate" class="form-control" readonly="readonly" />
+                        <span asp-validation-for="StartCarRentalDate" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label asp-for="EndCarRentalDate" class="control-label"></label>
+                        <input asp-for="EndCarRentalDate" class="form-control" readonly="readonly" />
+                        <span asp-validation-for="EndCarRentalDate" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label asp-for="RentalInDays" class="control-label"></label>
+                        <input asp-for="RentalInDays" class="form-control" readonly="readonly" />
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label asp-for="PricePerDay" class="control-label"></label>
+                        <input asp-for="PricePerDay" class="form-control" readonly="readonly" />
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label asp-for="FullPrice" class="control-label"></label>
+                        <input asp-for="FullPrice" class="form-control" readonly="readonly" />
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Rent" class="btn btn-success" />
+            </div>
+        }
+    </div>
+</div>
+
+<div class="btn-group">
+    <a asp-action="ReturnToCarList" class="btn btn-primary">Back to Cars</a>
+    <a asp-action="Index" class="btn btn-primary">Back to Rentals</a>
+</div>
+

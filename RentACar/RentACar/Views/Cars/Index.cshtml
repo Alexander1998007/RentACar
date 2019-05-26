@@ -1,0 +1,84 @@
+﻿@model IEnumerable<CarDTO>
+
+@{
+    ViewData["Title"] = "Cars List";
+}
+
+<h2>Cars List</h2>
+
+<p>
+    <a asp-action="CreateAsync" class="btn btn-primary">Create New</a>
+</p>
+
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Find by date:
+            <input type="datetime" name="startDate" value="@ViewData["StartDate"]" />
+            <input type="datetime" name="endDate" value="@ViewData["EndDate"]" />
+            <input type="submit" value="Search" class="btn btn-default" />
+            <a asp-action="Index">Back to Full List</a>
+        </p>
+    </div>
+</form>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>
+                @*Photo*@
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Brand)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Model)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                Rental length
+            </th>
+            <th>
+                Full price
+            </th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @*Photo*@
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Brand)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Model)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                TODO
+            </td>
+            <td>
+                TODO
+            </td>
+            <td>
+                <a asp-action="Rent" asp-route-id="@item.Id" class="btn btn-success">Rent</a>
+            </td>
+            <td class="btn-group">
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning">Edit</a>
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info">Details</a>
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
