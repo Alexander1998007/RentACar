@@ -33,16 +33,17 @@
 
                     @if (Context.User.Identity.IsAuthenticated)
                     {
-                        <li><a asp-area="" asp-controller="Rentals" asp-action="Index">My Rentals</a></li>
+                        <li><a asp-area="" asp-controller="Manage" asp-action="Index">Мій профіль</a></li>
+                        <li><a asp-area="" asp-controller="Rentals" asp-action="Index">Мої оренди</a></li>
                     }
 
                     @if (Context.User.IsInRole("admin"))
                     {
-                        <li><a asp-area="" asp-controller="Cars" asp-action="Create">Add Car</a></li>
-                        <li><a asp-area="" asp-controller="Roles" asp-action="UserList">Roles</a></li>
+                        <li><a asp-area="" asp-controller="Cars" asp-action="Create">Додати авто</a></li>
+                        <li><a asp-area="" asp-controller="Roles" asp-action="UserList">Ролі</a></li>
                     }
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="About">Про нас</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Контакти</a></li>
                 </ul>
                 @await Html.PartialAsync("_LoginPartial")
             </div>

@@ -1,60 +1,55 @@
-﻿@model RentACar.Models.CarViewModels.CreateCarViewModel
+﻿@model CarDTO
 
-@{
-    ViewData["Title"] = "Додати авто";
-}
-
-<h2>Додати</h2>
-
-<h4>авто</h4>
+<h4>Редагувати авто</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        @using (Html.BeginForm("CreateAsync", "Cars", FormMethod.Post))
-        {
+        <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
             <div class="form-group">
                 <label asp-for="VIN" class="control-label"></label>
-                <input asp-for="VIN" class="form-control" />
+                <input asp-for="VIN" class="form-control" value="@Model.VIN" />
                 <span asp-validation-for="VIN" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="RegistrationNumber" class="control-label"></label>
-                <input asp-for="RegistrationNumber" class="form-control" />
+                <input asp-for="RegistrationNumber" class="form-control" value="@Model.RegistrationNumber" />
                 <span asp-validation-for="RegistrationNumber" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Brand" class="control-label"></label>
-                <input asp-for="Brand" class="form-control" />
+                <input asp-for="Brand" class="form-control" value="@Model.Brand" />
                 <span asp-validation-for="Brand" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Model" class="control-label"></label>
-                <input asp-for="Model" class="form-control" />
+                <input asp-for="Model" class="form-control" value="@Model.Model" />
                 <span asp-validation-for="Model" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Price" class="control-label"></label>
-                <input asp-for="Price" class="form-control" />
+                <input asp-for="Price" class="form-control" value="@Model.Price" />
                 <span asp-validation-for="Price" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="CreatedAt" class="control-label"></label>
-                <input asp-for="CreatedAt" class="form-control" />
+                <input asp-for="CreatedAt" class="form-control" value="@Model.CreatedAt" />
                 <span asp-validation-for="CreatedAt" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="UpdatedAt" class="control-label"></label>
-                <input asp-for="UpdatedAt" class="form-control" />
+                <input asp-for="UpdatedAt" class="form-control" value="@Model.UpdatedAt" />
                 <span asp-validation-for="UpdatedAt" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Додати" class="btn btn-default" />
+                <input type="submit" value="Зберегти зміни" class="btn btn-default" />
             </div>
-        }
+        </form>
     </div>
 </div>
 
 <div>
     <a asp-action="Index">Назад до списку</a>
 </div>
+

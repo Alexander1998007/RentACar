@@ -1,0 +1,63 @@
+﻿@model CarDTO
+
+<h3>Ви точно хочете видалити це авто?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.VIN)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.VIN)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.RegistrationNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RegistrationNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Brand)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Brand)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Model)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Model)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedAt)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CreatedAt)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.UpdatedAt)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UpdatedAt)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+
+        <input type="submit" value="Видалити" class="btn btn-warning" />
+        @*<input type="submit" asp-for="Id" value="Видалити" class="btn btn-warning"/>*@
+        <a asp-action="Index" class="btn btn-info">Назад до списку</a>
+
+
+
+        @*<input type="submit" value="Видалити" class="btn btn-warning" />
+        <a asp-action="Index" class="btn btn-info">Назад до списку</a>*@
+    </form>
+</div>

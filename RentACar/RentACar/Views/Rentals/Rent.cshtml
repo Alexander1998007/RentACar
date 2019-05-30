@@ -1,12 +1,12 @@
 ﻿@model RentalDTO
 
 @{
-    ViewData["Title"] = "Rent a car";
+    ViewData["Title"] = "Орендувати авто";
 }
 
 <h2>@ViewData["Title"]</h2>
 
-<h4>Rental data</h4>
+<h4>Дані оренди</h4>
 
 <hr />
 
@@ -66,14 +66,14 @@
                 </div>
             </div>
             <div class="form-group">
-                <input type="submit" value="Rent" class="btn btn-success" />
+                <input type="submit" value="Орендувати" class="btn btn-success" />
             </div>
         }
     </div>
 </div>
 
 <div class="btn-group">
-    <a asp-action="ReturnToCarList" class="btn btn-primary">Back to Cars</a>
-    <a asp-action="Index" class="btn btn-primary">Back to Rentals</a>
+    <a href="##" onClick="history.go(-1); return false;" class="btn btn-primary">Назад до списку авто</a>
+    <a asp-action="Index" class="btn btn-primary">Назад до орендованих авто</a>
 </div>
 

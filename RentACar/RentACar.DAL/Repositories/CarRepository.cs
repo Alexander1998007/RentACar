@@ -38,6 +38,7 @@ namespace RentACar.DAL.Repositories
         {
             var car = await GetAsync(id);
             _context.Cars.Remove(car);
+            _context.SaveChanges();
             await Task.CompletedTask;
         }
 

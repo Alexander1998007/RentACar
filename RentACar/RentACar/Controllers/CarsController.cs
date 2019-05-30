@@ -91,19 +91,20 @@ namespace RentACar.Controllers
         }
 
         // GET: Cars/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
+        public async Task<IActionResult> Edit(int id)
+            => View(await _carService.GetAsync(id));
+        
 
         // POST: Cars/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task<IActionResult> Edit(CreateCarViewModel createCarViewModel)
         {
             try
             {
-                // TODO: Add update logic here
+                var mapper = new MapperConfiguration(cfg => cfg.CreateMap<CarDTO, CreateCarViewModel>()).CreateMapper();
+                var carDto = mapper.Map<CreateCarViewModel, CarDTO>(createCarViewModel);
+                await _carService.UpdateAsync(carDto);
 
                 return RedirectToAction(nameof(Index));
             }
@@ -114,20 +115,18 @@ namespace RentACar.Controllers
         }
 
         // GET: Cars/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
+
+        public async Task<IActionResult> Delete(int id)
+            => View(await _carService.GetAsync(id));
 
         // POST: Cars/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public async Task<IActionResult> Delete(int id, IFormCollection collection)
         {
             try
             {
-                // TODO: Add delete logic here
-
+                await _carService.RemoveAsync(id);
                 return RedirectToAction(nameof(Index));
             }
             catch

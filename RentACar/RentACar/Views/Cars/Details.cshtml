@@ -1,13 +1,13 @@
 ﻿@model CarDTO
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Деталі";
 }
 
-<h2>Details</h2>
+<h2>Деталі</h2>
 
 <div>
-    <h4>Car</h4>
+    <h4>авто</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -43,6 +43,9 @@
     </dl>
 </div>
 <div class="btn btn-group">
-    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Edit</a>
-    <a asp-action="Index" class="btn btn-info">Back to List</a>
+    @if (Context.User.IsInRole("admin"))
+    {
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Змінити</a>
+    }
+    <a asp-action="Index" class="btn btn-info">Назад до списку</a>
 </div>
